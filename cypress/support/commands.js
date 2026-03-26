@@ -23,3 +23,31 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
+  if (options && options.sensitive) {
+    options.log = false;
+
+    Cypress.log({
+      $el: element,
+      name: 'type',
+      message: '*'.repeat(text.length),
+    });
+  }
+
+  return originalFn(element, text, options);
+});
+
+Cypress.Commands.add('login', (email, password) => {
+  cy.contains('button', 'Sign In').click();
+
+  cy.contains('h4.modal-title', 'Log in').should('be.visible');
+
+  cy.get('#signinEmail').should('be.visible').clear().type(email);
+  cy.get('#signinPassword').should('be.visible').clear().type(password, { sensitive: true });
+
+  cy.contains('button.btn.btn-primary', 'Login')
+    .should('be.visible')
+    .and('not.be.disabled')
+    .click();
+});
