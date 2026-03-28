@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cy:open:qauto": "cypress open --config-file cypress.qauto.config.js",
+    "cy:run:qauto": "cypress run --config-file cypress.qauto.config.js",
+    "cy:open:qauto2": "cypress open --config-file cypress.qauto2.config.js",
+    "cy:run:qauto2": "cypress run --config-file cypress.qauto2.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,9 @@
   },
   "homepage": "https://github.com/DZhalo/aqa-advanced-cypress#readme",
   "devDependencies": {
-    "cypress": "^15.11.0"
+    "cypress": "^15.11.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

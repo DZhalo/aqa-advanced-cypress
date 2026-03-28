@@ -111,14 +111,14 @@ it('should show error when passwords do not match', () => {
     registrationModal.registerButtonShouldBeEnabled();
     registrationModal.clickRegisterButton();
 
-    garagePage.verifyPageIsOpened();
+    garagePage.pageShouldBeOpened();
   });
 
   it('should login with created credentials (via custom command)', () => {
     registrationModal.fillForm(user);
     registrationModal.clickRegisterButton();
 
-    garagePage.verifyPageIsOpened();
+    garagePage.pageShouldBeOpened();
 
     cy.clearCookies();
     cy.clearLocalStorage();
@@ -126,6 +126,6 @@ it('should show error when passwords do not match', () => {
     homePage.visit();
     cy.login(user.email, user.password);
 
-    garagePage.verifyPageIsOpened();
+    garagePage.pageShouldBeOpened();
   });
 });
