@@ -137,3 +137,17 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Cypress reports
+cypress/reports/
+cypress/screenshots/
+
+# Mochawesome reports
+mochawesome-report/
+mochawesome/
+
+# JSON report files
+*.json
+
+# HTML reports
+*.html

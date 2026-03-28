@@ -38,16 +38,22 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
   return originalFn(element, text, options);
 });
 
-Cypress.Commands.add('login', (email, password) => {
-  cy.contains('button', 'Sign In').click();
+Cypress.Commands.add('visitWithBasicAuth', (path = '/') => {
+  cy.visit(path, {
+    auth: {
+      username: Cypress.env('basicAuthUsername'),
+      password: Cypress.env('basicAuthPassword'),
+    },
+  });
+});
 
-  cy.contains('h4.modal-title', 'Log in').should('be.visible');
+Cypress.Commands.add('login', () => {
+  cy.get('button').contains('Sign In').click();
 
-  cy.get('#signinEmail').should('be.visible').clear().type(email);
-  cy.get('#signinPassword').should('be.visible').clear().type(password, { sensitive: true });
+  cy.get('h4.modal-title').should('have.text', 'Log in');
 
-  cy.contains('button.btn.btn-primary', 'Login')
-    .should('be.visible')
-    .and('not.be.disabled')
-    .click();
+  cy.get('#signinEmail').clear().type(Cypress.env('userEmail'));
+  cy.get('#signinPassword').clear().type(Cypress.env('userPassword'), { sensitive: true });
+
+  cy.get('button.btn.btn-primary').contains('Login').click();
 });
