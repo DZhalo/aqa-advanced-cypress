@@ -57,3 +57,18 @@ Cypress.Commands.add('login', () => {
 
   cy.get('button.btn.btn-primary').contains('Login').click();
 });
+
+Cypress.Commands.add('createExpenseApi', ({ carId, reportedAt, mileage, liters, totalCost }) => {
+  cy.request({
+    method: 'POST',
+    url: '/api/expenses',
+    body: {
+      carId,
+      reportedAt,
+      mileage,
+      liters,
+      totalCost,
+      forceMileage: false,
+    },
+  });
+});
