@@ -20,10 +20,15 @@ class FuelExpensesPage {
     this.getVehicleDropdownButton().should('contain.text', vehicleName);
   }
 
+  selectVehicleFromDropdown(vehicleName) {
+    this.getVehicleDropdownButton().click();
+    cy.contains('.car-select-dropdown_menu .dropdown-item', vehicleName).click();
+  }
+
   expenseRowShouldContain({ date, mileage, liters, totalCost }) {
     const formattedTotalCost = `${Number(totalCost).toFixed(2)} USD`;
 
-    cy.get('tbody tr').first().within(() => {
+    cy.get('tbody tr').contains(date).parents('tr').within(() => {
       cy.get('td').eq(0).should('contain.text', date);
       cy.get('td').eq(1).should('contain.text', mileage);
       cy.get('td').eq(2).should('contain.text', liters);

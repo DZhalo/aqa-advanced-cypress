@@ -25,16 +25,16 @@ class GaragePage {
     this.getAddCarButton().should('be.visible');
   }
 
-  carNameShouldBeVisible(carName) {
-    cy.contains('p.car_name, p', carName).should('be.visible');
+  carCardShouldContain(carName) {
+    cy.contains('p.car_name', carName).should('be.visible');
+  }
+
+  firstCarNameShouldBeVisible(carName) {
+    this.carCardShouldContain(carName);
   }
 
   fuelExpenseButtonShouldBeVisible() {
     cy.contains('button', 'Add fuel expense').should('be.visible');
-  }
-
-  firstCarNameShouldBeVisible(carName) {
-    this.carNameShouldBeVisible(carName);
   }
 }
 
