@@ -147,7 +147,11 @@ mochawesome-report/
 mochawesome/
 
 # JSON report files
-*.json
+cypress/reports/**/*.json
+mochawesome/**/*.json
+
+# Allow fixtures
+!cypress/fixtures/*.json
 
 # HTML reports
 *.html
