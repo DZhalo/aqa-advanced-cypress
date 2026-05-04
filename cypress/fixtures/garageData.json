@@ -1,0 +1,14 @@
+{
+  "car": {
+    "brand": "Audi",
+    "model": "TT",
+    "mileage": 4,
+    "name": "Audi TT"
+  },
+  "expense": {
+    "date": "04.05.2026",
+    "mileage": 7,
+    "liters": 2,
+    "totalCost": 150
+  }
+}

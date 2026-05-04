@@ -1,0 +1,15 @@
+{
+  "car": {
+    "brand": "BMW",
+    "model": "3",
+    "mileage": 2,
+    "name": "BMW 3",
+    "carBrandId": 2,
+    "carModelId": 6
+  },
+  "expense": {
+    "mileage": 20,
+    "liters": 13,
+    "totalCost": 150
+  }
+}
